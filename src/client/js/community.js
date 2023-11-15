@@ -3,8 +3,6 @@
     return
   }
   class FormAttributes {
-    thumbnail = undefined
-    thumbnailInfo = {}
     files = []
     memo = ''
     storage = ''
@@ -81,9 +79,8 @@
   writeForm.onsubmit = e => {
     e.preventDefault()
     const formData = new FormData()
-    const { thumbnailInfo, files } = formAttributes
+    const { files } = formAttributes
     const { memo, storage, cycle } = e.target
-    formData.append('thumbnail', JSON.stringify(thumbnailInfo))
     formData.append('memo', memo.value)
     formData.append('storage', storage.value)
     formData.append('cycle', `${cycle.value}`)
@@ -133,7 +130,6 @@
       const html = items.map(item => {
         const { _id, user, createdAt } = item
         const { avatarUrl, name } = user
-        const thumbnail = item.thumbnail
         return `
           <a class="__card_item __community_card_item" href="/community/${_id}">
             <div class="__card_wrapper">

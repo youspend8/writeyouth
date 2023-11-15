@@ -5,7 +5,6 @@ const schema = new mongoose.Schema({
     type: mongoose.SchemaTypes.ObjectId,
     ref: 'User'
   },
-  thumbnail: String,
   cycle: Number,
   storage: String,
   memo: String,

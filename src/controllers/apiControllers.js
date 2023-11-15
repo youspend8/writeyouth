@@ -6,7 +6,7 @@ export const postImage = (req, res) => {
 };
 
 export const postCommunity = async (request, response) => {
-  const { thumbnail, cycle, storage, memo } = request.body
+  const { cycle, storage, memo } = request.body
   const files = (() => {
     if (request.files) {
       return request.files.map(file => file.key)
@@ -15,7 +15,6 @@ export const postCommunity = async (request, response) => {
   })()
   const community = await Community.create({
     user: request.session.loggedInUser._id,
-    thumbnail: JSON.parse(thumbnail).key,
     cycle: cycle,
     storage: storage,
     memo: memo,
