@@ -1,0 +1,49 @@
+extends ../../base
+include ../../mixins/community/cardItem
+
+block content
+    main#contents
+        .__spy
+        .__container.__community_write
+            .__inner_title
+                h1 유언장 작성
+            form#write_form(method="POST", enctype="multipart/form-data")
+                .__input
+                    label(onclick) 유언장 이미지
+                    .__image_uploader
+                        .__stage
+                        label.__button(for="__uploader_button")
+                            img.__icon(src="/uploads/icons/camera.png", alt="사진 아이콘")
+                            span 이미지 업로드
+                        input#__uploader_button(type="file", name="files" multiple)
+                    p * 10MB 이하만 업로드 가능합니다.
+
+                .__input
+                    label(for="memo") 메모
+                    input#memo(type="text" name="memo")
+                    p * 남기고 싶은 말을 자유롭게 남겨보세요.
+
+                .__input
+                    label(for="storage") 유언장을 보관할 장소
+                    input#storage(type="text" name="storage")
+                    p * 실물 유언장을 보관할 장소를 적어주세요.
+
+                .__input
+                    label(for="storage" onclick) 유언장을 메일로 받아보기
+                        span.__required *
+                    .__radio
+                        input(id="month3" type="radio" name="cycle" value="3")
+                        label(for="month3") 3개월
+                        input(id="month6" type="radio" name="cycle" value="6")
+                        label(for="month6") 6개월
+                        input(id="month12" type="radio" name="cycle" value="12")
+                        label(for="month12") 1년
+                        input(id="none", type="radio" name="cycle" value="0" checked)
+                        label(for="none") 받지않음
+                    p * 선택하신 주기마다 이메일로 유언장을 전송해드려요.
+
+                //.__input.isPrivate
+                //    label(onclick) 나만보기
+                //        span *
+
+                input#submit(type="submit", value="유언장 공유하기")

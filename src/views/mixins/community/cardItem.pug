@@ -1,0 +1,10 @@
+mixin communityCardItem(id, thumbnail, username, createdAt)
+    a.__card_item(href=`/community/${id}`).__community_card_item
+        div.__card_wrapper
+            .__user
+                .__profile
+                    img(crossorigin="anonymous", src=`${thumbnail}`, alt="")
+                p.__username=username
+            .__thumbnail
+                img(src=`${thumbnail}`)
+            .__created_at=createdAt

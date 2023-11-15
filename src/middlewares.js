@@ -1,4 +1,4 @@
-import { S3Client } from '@aws-sdk/client-s3';
+import {S3Client} from '@aws-sdk/client-s3';
 import multer from 'multer';
 import multerS3 from 'multer-s3';
 
@@ -18,7 +18,7 @@ export const localsMiddleware = (req, res, next) => {
   next();
 };
 
-const s3 = new S3Client({
+export const s3 = new S3Client({
   region: 'ap-northeast-2',
   credentials: {
     accessKeyId: process.env.AWS_ID,
@@ -26,7 +26,7 @@ const s3 = new S3Client({
   },
 });
 
-const s3ImageUploader = multerS3({
+export const s3ImageUploader = multerS3({
   s3: s3,
   bucket: 'writeyouth',
   Key: 'images/',
@@ -38,6 +38,11 @@ const isHeroku = process.env.NODE_ENV === 'production';
 export const avatarUpload = multer({
   dest: 'uploads/avatars/',
   storage: isHeroku ? s3ImageUploader : undefined,
+});
+
+export const s3Uploader = multer({
+  dest: 'images/',
+  storage: s3ImageUploader
 });
 
 // 로그인되지 않은 유저 차단하는 미들웨어

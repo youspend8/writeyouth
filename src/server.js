@@ -1,24 +1,17 @@
 import express from 'express';
 import morgan from 'morgan';
 import session from 'express-session';
-// import helmet from "helmet";
 import cors from 'cors';
-// import expressHbs from 'express-handlebars';
 import MongoStore from 'connect-mongo';
 import globalRouter from './routers/globalRouters';
 import contentRouter from './routers/contentRouters';
 import userRouter from './routers/userRouters';
 import policyRouter from './routers/policyRouters';
-import { localsMiddleware } from './middlewares';
+import communityRouter from "./routers/communityRouters";
+import apiRouter from "./routers/apiRouters";
+import {localsMiddleware} from './middlewares';
 
 const app = express();
-// if (process.env.NODE_ENV === "production") {
-//   app.use(
-//     helmet({
-//       contentSecurityPolicy: false,
-//     })
-//   );
-// }
 
 const corsOptions = {
   origin:
@@ -27,6 +20,7 @@ const corsOptions = {
   optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
+app.use(express.json());
 
 const logger = morgan('dev');
 app.use(logger);
@@ -60,6 +54,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/', globalRouter);
 app.use('/users', userRouter);
 app.use('/contents', contentRouter);
+app.use('/community', communityRouter);
 app.use('/policy', policyRouter);
+app.use('/api', apiRouter);
 
 export default app;

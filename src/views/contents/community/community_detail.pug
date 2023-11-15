@@ -1,0 +1,34 @@
+extends ../../base
+include ../../mixins/community/cardItem
+
+block content
+    main#contents
+        .__spy
+        .__container.__community_detail
+            .__user
+                .__profile
+                    img(src="/uploads/about/writing.png", alt="")
+                p.__username
+                span.__created_at
+
+            .swiper
+                .swiper-wrapper
+                .swiper-pagination
+                .swiper-button-prev
+                .swiper-button-next
+
+            p.__text It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+
+            .__emotions
+                .__emotion.good
+                    label.__description(data-type="good") 😄
+                    label.__count 0
+                .__emotion.cheer
+                    label.__description(data-type="cheer") 🤗
+                    label.__count 0
+                .__emotion.moved
+                    label.__description(data-type="moved") 🥹
+                    label.__count 0
+                .__emotion.sad
+                    label.__description(data-type="sad") 😭
+                    label.__count 0

@@ -6,14 +6,19 @@ html(lang="kr")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet", href="/assets/css/styles.css")
     link(rel="shortcut icon" type="image/x-icon" href="/uploads/contents/youth_logo.png")
+    link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css")
     if pageTitle === 'Home'
       title 유언을 쓰다
-    else 
+    else
       title #{ pageTitle } | 유언을 쓰다
-  body 
+  body
     include partials/header
     block content
     include partials/footer
+    script(
+      src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js",
+      crossorigin="anonymous"
+    )
     script(
       src="https://kit.fontawesome.com/271532994e.js",
       crossorigin="anonymous"
@@ -21,6 +26,7 @@ html(lang="kr")
     script(src="/assets/js/main.js")
     script(src="/assets/js/clickBar.js")
     script(src="/assets/js/changeHeader.js")
+    script(src="/assets/js/community.js")
     if pageTitle === "Home"
       script(src="/assets/js/blogScrollAni.js")
       script(src="/assets/js/messageScrollAni.js")

@@ -18,6 +18,7 @@ module.exports = {
     alert: './src/client/js/alert',
     qrContents: './src/client/js/qrContents',
     policyCheckBox: './src/client/js/policyCheckBox',
+    community: './src/client/js/community',
   },
   plugins: [
     new MiniCssExtractPlugin({

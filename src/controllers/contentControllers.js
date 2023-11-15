@@ -1,5 +1,4 @@
-import express from 'express';
-import { qrContents } from '../data/qrContents';
+import {qrContents} from '../data/qrContents';
 
 export const home = (req, res) => {
   const popup = req.query.popup;
@@ -18,13 +17,6 @@ export const youthkit = (req, res) => {
   return res.render(
     'https://smartstore.naver.com/writeyouth/products/9056123573'
   );
-};
-
-export const community = (req, res) => {
-  const popup = encodeURIComponent(
-    '현재 커뮤니티 서비스 개발 중입니다. \n조금만 기다려주세요.'
-  );
-  return res.redirect('/?popup=' + popup);
 };
 
 export const qna = (req, res) => {

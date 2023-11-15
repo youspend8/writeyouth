@@ -1,35 +1,29 @@
 import express from 'express';
+import {about, community, communityDetail, communityWrite, home, youthkit,} from '../controllers/contentControllers';
 import {
-  home,
-  about,
-  youthkit,
-  community,
-} from '../controllers/contentControllers';
-import {
-  getJoin,
-  postJoin,
-  getLogin,
-  postLogin,
-  getFindID,
-  postFindID,
-  showID,
-  getFindPW,
-  postFindPW,
-  logout,
-  startKakaoLogin,
   finishKakaoLogin,
-  startNaverLogin,
   finishNaverLogin,
+  getFindID,
+  getFindPW,
+  getJoin,
+  getLogin,
+  logout,
+  postFindID,
+  postFindPW,
+  postJoin,
+  postLogin,
+  showID,
+  startKakaoLogin,
+  startNaverLogin,
   welcome,
 } from '../controllers/userControllers';
-import { protectorMiddleware, publicOnlyMiddleware } from '../middlewares';
+import {protectorMiddleware, publicOnlyMiddleware} from '../middlewares';
 
 const globalRouter = express.Router();
 
 globalRouter.get('/', home);
 globalRouter.get('/about', about);
 globalRouter.get('/youthkit', youthkit);
-globalRouter.get('/community', protectorMiddleware, community);
 globalRouter
   .route('/join')
   .all(publicOnlyMiddleware)

@@ -3,16 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.publicOnlyMiddleware = exports.protectorMiddleware = exports.localsMiddleware = exports.beforeDeleteUser = exports.avatarUpload = void 0;
-
+exports.s3Uploader = exports.s3ImageUploader = exports.s3 = exports.publicOnlyMiddleware = exports.protectorMiddleware = exports.localsMiddleware = exports.beforeDeleteUser = exports.avatarUpload = void 0;
 var _clientS = require("@aws-sdk/client-s3");
-
 var _multer = _interopRequireDefault(require("multer"));
-
 var _multerS = _interopRequireDefault(require("multer-s3"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
 // 모든 템플릿에서 사용 가능한 전역 변수 선언
 var localsMiddleware = function localsMiddleware(req, res, next) {
   // res.header(
@@ -28,7 +23,6 @@ var localsMiddleware = function localsMiddleware(req, res, next) {
   res.locals.isHeroku = isHeroku;
   next();
 };
-
 exports.localsMiddleware = localsMiddleware;
 var s3 = new _clientS.S3Client({
   region: 'ap-northeast-2',
@@ -37,20 +31,27 @@ var s3 = new _clientS.S3Client({
     secretAccessKey: process.env.AWS_SECRET
   }
 });
+exports.s3 = s3;
 var s3ImageUploader = (0, _multerS["default"])({
   s3: s3,
   bucket: 'writeyouth',
   Key: 'images/',
   acl: 'public-read'
 });
+exports.s3ImageUploader = s3ImageUploader;
 var isHeroku = process.env.NODE_ENV === 'production';
 var avatarUpload = (0, _multer["default"])({
   dest: 'uploads/avatars/',
   storage: isHeroku ? s3ImageUploader : undefined
-}); // 로그인되지 않은 유저 차단하는 미들웨어
-
+});
 exports.avatarUpload = avatarUpload;
+var s3Uploader = (0, _multer["default"])({
+  dest: 'images/',
+  storage: s3ImageUploader
+});
 
+// 로그인되지 않은 유저 차단하는 미들웨어
+exports.s3Uploader = s3Uploader;
 var protectorMiddleware = function protectorMiddleware(req, res, next) {
   if (req.session.loggedIn) {
     next();
@@ -58,26 +59,24 @@ var protectorMiddleware = function protectorMiddleware(req, res, next) {
     // req.session.errorMessage1 = "로그인이 필요한 서비스입니다.";
     return res.redirect('/login');
   }
-}; // 로그인된 유저 차단하는 미들웨어
+};
 
-
+// 로그인된 유저 차단하는 미들웨어
 exports.protectorMiddleware = protectorMiddleware;
-
 var publicOnlyMiddleware = function publicOnlyMiddleware(req, res, next) {
   if (!req.session.loggedIn) {
     next();
   } else {
     return res.redirect('/');
   }
-}; // 회원 탈퇴 이전에 경고창 띄우는 미들웨어
+};
 
-
+// 회원 탈퇴 이전에 경고창 띄우는 미들웨어
 exports.publicOnlyMiddleware = publicOnlyMiddleware;
-
 var beforeDeleteUser = function beforeDeleteUser(req, res) {
   return res.render('users/beforeDeleteUser', {
     pageTitle: 'DeleteUser'
-  }); // next();
+  });
+  // next();
 };
-
 exports.beforeDeleteUser = beforeDeleteUser;

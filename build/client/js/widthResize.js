@@ -1,11 +1,9 @@
 "use strict";
 
 var blogPost = document.querySelectorAll(".blog__post");
-
 var changeOrderBlog = function changeOrderBlog() {
   var width = window.innerWidth; // event 함수 안에서 선언해야 변환된 width 구할 수 있음
   // console.log(width);
-
   if (width <= 770) {
     blogPost[0].classList.add("order");
     blogPost[2].classList.add("order");
@@ -14,5 +12,4 @@ var changeOrderBlog = function changeOrderBlog() {
     blogPost[2].classList.remove("order");
   }
 };
-
 window.addEventListener("resize", changeOrderBlog);
