@@ -43,18 +43,6 @@
     imageUploader.files = dataTransfer.files
   }
 
-  // function switchMode(mode) {
-  //   if (mode === 'empty') {
-  //     thumbnailStage.style.display = 'none'
-  //     button.style.display = 'flex'
-  //     removeButton.style.display = 'none'
-  //   } else {
-  //     thumbnailStage.style.display = 'flex'
-  //     button.style.display = 'none'
-  //     removeButton.style.display = 'flex'
-  //   }
-  // }
-
   function mountStageItems() {
     const { files } = formAttributes
     const stage = document.querySelector('.__image_uploader > .__stage')
@@ -89,32 +77,6 @@
     formAttributes.addFiles(files)
     mountStageItems()
   }
-
-  // removeButton.addEventListener('click', () => {
-  //   formAttributes.files.thumbnail = undefined
-  //   switchMode('empty')
-  // })
-  // thumbnailUploader.onchange = e => {
-  //   const files = [ ...thumbnailUploader.files ]
-  //   formAttributes.thumbnail = files[0]
-  //   const { thumbnail } = formAttributes
-  //   switchMode()
-  //   const reader = new FileReader()
-  //   reader.readAsDataURL(thumbnail)
-  //   reader.onload = () => {
-  //     thumbnailStage.innerHTML = `<img src="${reader.result}" alt="임시 대표이미지" />`
-  //   }
-  //   const formData = new FormData()
-  //   formData.append('file', thumbnail)
-  //   fetch('/api/v1/image', {
-  //     method: 'post',
-  //     body: formData
-  //   }).then(response => response.json())
-  //     .then(data => {
-  //       console.log({...data})
-  //       formAttributes.thumbnailInfo = { ...data }
-  //     })
-  // }
 
   writeForm.onsubmit = e => {
     e.preventDefault()

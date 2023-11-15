@@ -14,6 +14,9 @@ block content
             .__inner_header
                 if loggedInUser
                     button.__inner_header_button(onclick="location.href='/community/write'") 유언장 공유하기
+                else
+                    button.__inner_header_button(onclick="alert('유언장을 공유하기 위해 로그인이 필요합니다.')") 유언장 공유하기
+                if loggedInUser
                     button.__inner_header_button.__filter.__my(style="display: block") 나의 유언장 보기
                     button.__inner_header_button.__filter.__all(style="display: none") 모두의 유언장 보기
             .__inner_main
