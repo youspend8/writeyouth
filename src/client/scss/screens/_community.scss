@@ -214,6 +214,19 @@
         border: 1px solid #e5e5ed;
       }
     }
+    & > button.__delete {
+      width: 20px;
+      height: 20px;
+      color: #fff;
+      border: 0;
+      margin-top: 5px;
+      padding: 7.5px;
+
+      & > .__remove_icon {
+        color: grey;
+        font-weight: 500;
+      }
+    }
   }
 
   .__text {
@@ -242,6 +255,10 @@
       }
       & > .__count {
         margin-top: 10px;
+      }
+      & > .__label {
+        margin-top: 5px;
+        font-size: 13px;
       }
     }
   }
