@@ -131,6 +131,7 @@
 .__community_card_item {
   text-decoration: none;
   color: black;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16);
   margin: 0 20px;
   & > .__card_wrapper {
     width: 100%;
@@ -140,7 +141,8 @@
     align-items: center;
     & > .__user {
       width: 100%;
-      padding: 10px 0;
+      padding: 10px 15px;
+      padding-top: 12px;
       display: flex;
       align-items: center;
       & > .__profile {
@@ -178,7 +180,7 @@
     }
     & > .__created_at {
       width: 100%;
-      padding: 10px 0;
+      padding: 10px 15px;
       text-align: right;
       color: #6e6e6e;
       font-size: 13px;
@@ -227,6 +229,18 @@
         font-weight: 500;
       }
     }
+    & > .__icon {
+      font-size: 30px;
+      color: #898989;
+      margin-left: 2.5px;
+      cursor: pointer;
+      &.__edit:hover {
+        color: black;
+      }
+      &.__delete:hover {
+        color: red;
+      }
+    }
   }
 
   .__text {
@@ -247,6 +261,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      cursor: pointer;
       & > .__description {
         width: 100%;
         text-align: center;

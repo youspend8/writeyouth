@@ -15,5 +15,6 @@ userRouter.route("/edit").all(_middlewares.protectorMiddleware).get(_userControl
 userRouter.route("/editPW").all(_middlewares.protectorMiddleware).get(_userControllers.getEditPW).post(_userControllers.postEditPW);
 userRouter.get("/beforeDelete", _middlewares.protectorMiddleware, _middlewares.beforeDeleteUser);
 userRouter.get("/delete", _middlewares.protectorMiddleware, _userControllers.deleteUser);
+userRouter.get("/community", _middlewares.protectorMiddleware, _userControllers.getCommunity);
 var _default = userRouter;
 exports["default"] = _default;

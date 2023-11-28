@@ -11,6 +11,8 @@ block content
             li.menu.active 비밀번호 변경
           a(href="/users/beforeDelete")
             li.menu 회원 탈퇴
+          a(href="/users/community")
+            li.menu 나의 유언장
 
       .body
         form#editPW(method="POST")
@@ -34,11 +36,11 @@ block content
               placeholder="변경할 비밀번호를 입력해주세요."
               value=newPassword
             )
-            #error 
+            #error
               if newPassError
                 i.fa-solid.fa-circle-exclamation
                 p= newPassError
-          .info 
+          .info
             label(for="newPasswordConfirm", onclick) 새 비밀번호 확인
             input#newPasswordConfirm(
               type="password",

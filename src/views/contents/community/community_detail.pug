@@ -10,6 +10,9 @@ block content
                     img(src="/uploads/about/writing.png", alt="")
                 p.__username
                 span.__created_at
+                if isOwn
+                    i.material-icons.__icon.__delete delete
+                    i.material-icons.__icon.__edit edit
 
             .swiper
                 .swiper-wrapper

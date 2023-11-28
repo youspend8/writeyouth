@@ -1,16 +1,13 @@
 import express from "express";
 import {
-  getEditUser,
-  postEditUser,
-  getEditPW,
-  postEditPW,
   deleteUser,
+  getCommunity,
+  getEditPW,
+  getEditUser,
+  postEditPW,
+  postEditUser,
 } from "../controllers/userControllers";
-import {
-  protectorMiddleware,
-  avatarUpload,
-  beforeDeleteUser,
-} from "../middlewares";
+import {avatarUpload, beforeDeleteUser, protectorMiddleware,} from "../middlewares";
 
 const userRouter = express.Router();
 
@@ -27,5 +24,6 @@ userRouter
   .post(postEditPW);
 userRouter.get("/beforeDelete", protectorMiddleware, beforeDeleteUser);
 userRouter.get("/delete", protectorMiddleware, deleteUser);
+userRouter.get("/community", protectorMiddleware, getCommunity);
 
 export default userRouter;

@@ -12,15 +12,17 @@ block content
               li.menu 비밀번호 변경
           a(href="/users/beforeDelete")
             li.menu 회원 탈퇴
+          a(href="/users/community")
+            li.menu 나의 유언장
 
       .body
         form#editUser(method="POST", enctype="multipart/form-data")
-          .user__photo 
+          .user__photo
             input#avatar(type="file", name="avatar")
             label(for="avatar", onclick)
               img(crossorigin="anonymous", src=`${loggedInUser.avatarUrl}`, alt="")
               span 프로필 변경
-          .user__info 
+          .user__info
             .info.name
               label(for="name", onclick) 이름
                 span *
@@ -30,7 +32,7 @@ block content
                 value=loggedInUser.name,
                 disabled
               )
-            .info.email 
+            .info.email
               label(for="email", onclick) 이메일
                 span *
               input#email(
@@ -51,7 +53,7 @@ block content
               p * 사용하고 계신 휴대전화 번호를 정확하게 입력해주세요.
             .info.birth
               label(for="birth", onclick) 생년월일
-              .birth__row 
+              .birth__row
                 input(
                   type="text",
                   name="year",

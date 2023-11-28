@@ -3,7 +3,6 @@ import fetch from 'cross-fetch';
 import bcrypt from 'bcrypt';
 import nodemailer from 'nodemailer';
 import querystring from 'querystring';
-import { Error } from 'mongoose';
 // import { smtpTransport } from "../../config/email";
 
 // min ~ max 까지 랜덤으로 숫자 생성하는 함수
@@ -735,6 +734,10 @@ export const getEditPW = (req, res) => {
     return res.status(400).render('users/editUser');
   }
   return res.render('users/editPW', { pageTitle: 'Profile' });
+};
+
+export const getCommunity = (req, res) => {
+  return res.render('users/community', { pageTitle: 'My Community' });
 };
 
 export const postEditPW = async (req, res) => {

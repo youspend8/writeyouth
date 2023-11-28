@@ -1,0 +1,20 @@
+extends ../base.pug
+
+block content
+  main#profile
+    .profile__wrapper
+      .menu
+        nav
+          a(href="/users/edit")
+            li.menu 계정 설정
+          a(href="/users/editPW")
+            li.menu 비밀번호 변경
+          a(href="/users/beforeDelete")
+            li.menu 회원 탈퇴
+          a(href="/users/community")
+            li.menu.active 나의 유언장
+
+      .body.__community(style="width: 100%")
+        .__inner_main
+          .grid.repeat2
+          .__no_content(style="display: none; height: 300px; align-items: center; justify-content: center;") 작성된 유언장이 없습니다.
